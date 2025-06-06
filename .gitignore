@@ -1,0 +1,20 @@
+# Ignore Google Credentials
+credentials/service_account.json
+
+#Python Stuff
+__pycache__/
+*pyc
+
+#Virtual Environment
+.venv/
+env/
+venv/
+
+#VS CODE settings
+.vscode/
+
+#streamlit config cache
+.streamlit
+
+#mac system files
+.DS_Store
