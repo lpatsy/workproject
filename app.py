@@ -30,9 +30,7 @@ credentials = ServiceAccountCredentials.from_json_keyfile_dict(cred_dict, scope)
 # loading data
 @st.cache_data
 def load_data():
-   
     client = gspread.authorize(credentials)
-
     sheet = client.open_by_url(SHEET_URL)
     worksheet = sheet.worksheet(SHEET_NAME)
     df = get_as_dataframe(sheet, header=0)
