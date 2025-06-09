@@ -1,0 +1,20 @@
+# Ignore Python virtual environments
+.venv/
+env/
+
+# Ignore Python cache files
+__pycache__/
+*.pyc
+
+# Ignore system files
+.DS_Store
+
+# Ignore Streamlit local secrets (never commit secrets to GitHub)
+.streamlit/secrets.toml
+
+# Ignore credentials and sensitive files
+credentials/
+*.json
+
+# Ignore VS Code settings (optional)
+.vscode/
