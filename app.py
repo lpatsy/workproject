@@ -49,6 +49,11 @@ st.set_page_config(page_title="PhotoTank", layout="wide")
 st.title("PhotoTank")
 st.write("Search for photos by description or year")
 
+#refresh button 
+if st.button("Refresh data"):
+    st.cache_data.clear()
+    st.rerun()
+    
 #sheet selection
 worksheet_names = get_worksheet_names()
 selected_sheet = st.selectbox("Select sheet (year):", worksheet_names)
@@ -81,7 +86,3 @@ else:
         st.markdown(f"### {row['Description']}")
         st.markdown(f"[View Image]({row['Image URL']})")
         st.markdown("---")
-
-if st.button("Refresh data"):
-    st.cache_data.clear()
-    st.rerun()
