@@ -53,7 +53,7 @@ st.write("Search for photos by description or year")
 if st.button("Refresh data"):
     st.cache_data.clear()
     st.rerun()
-    
+
 #sheet selection
 worksheet_names = get_worksheet_names()
 selected_sheet = st.selectbox("Select sheet (year):", worksheet_names)
@@ -84,5 +84,17 @@ if filtered_df.empty:
 else:
     for _, row in filtered_df.iterrows():
         st.markdown(f"### {row['Description']}")
+        st.markdown(f"[View Image]({row['Image URL']})")
+        st.markdown("---")
+
+# image display
+if filtered_df.empty:
+    st.info("No results found.")
+else:
+    for _, row in filtered_df.iterrows():
+        st.markdown(f"### {row['Description']}")
+        # Show the image if the link is accessible
+        st.image(row["Image URL"], use_column_width=True)
+        # Optionally, also provide a clickable link
         st.markdown(f"[View Image]({row['Image URL']})")
         st.markdown("---")
