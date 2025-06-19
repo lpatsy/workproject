@@ -79,14 +79,6 @@ else:
     filtered_df = df
     st.write(f"Showing all {len(filtered_df)} results")
 
-if filtered_df.empty:
-    st.info("No results found.")
-else:
-    for _, row in filtered_df.iterrows():
-        st.markdown(f"### {row['Description']}")
-        st.markdown(f"[View Image]({row['Image URL']})")
-        st.markdown("---")
-
 # image display
 if filtered_df.empty:
     st.info("No results found.")
@@ -94,7 +86,7 @@ else:
     for _, row in filtered_df.iterrows():
         st.markdown(f"### {row['Description']}")
         # Show the image if the link is accessible
-        st.image(row["Image URL"], use_column_width=True)
-        # Optionally, also provide a clickable link
-        st.markdown(f"[View Image]({row['Image URL']})")
+        if "Cover" in filtered_df.columns and pd.notna(row["Cover"]):
+            st.image(row["Cover"], width=300)
+        st.markdown(f"[View Image Link]({row['Image URL']})")
         st.markdown("---")
